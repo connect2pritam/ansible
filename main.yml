@@ -30,7 +30,6 @@
   hosts: apps
   gather_facts: true
   become: true
-  hosts: apps
   roles: 
     - deploy-apache
 
