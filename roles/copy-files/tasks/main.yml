@@ -1,0 +1,10 @@
+---
+- name: Creates directory /usr/share/tomcat/webapps/ansible/
+  file:
+    path: /usr/share/tomcat/webapps/ansible/
+    state: directory
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: /root/bad-ansible/index.html.app1
+    dest: /usr/share/tomcat/webapps/ansible/index.html

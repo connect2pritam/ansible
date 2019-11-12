@@ -1,0 +1,37 @@
+- name: configuration
+  hosts: all
+  gather_facts: true
+  become: true
+  roles: 
+    - common
+
+- name: deploy haproxy
+  hosts: frontends
+  gather_facts: true
+  become: true
+  roles: 
+    - haproxy
+
+- name: deploy tomcat
+  hosts: apps
+  gather_facts: true
+  become: true
+  roles: 
+    - deploy-tomcat
+
+- name: Copy index.html
+  hosts: apps
+  gather_facts: true
+  become: true
+  roles: 
+    - copy-files
+
+- name: deploy apache
+  hosts: apps
+  gather_facts: true
+  become: true
+  hosts: apps
+  roles: 
+    - deploy-apache
+
+
